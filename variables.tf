@@ -22,12 +22,13 @@ variable "image" {
 variable "ssh_key_name" {
   description = "The SSH key pair zone of the instance"
   type        = string
+  default     = null
 }
 
-variable "vpc_id" {
-  description = "The VPC ID of the instance"
-  type        = string
-}
+# variable "vpc_id" {
+#   description = "The VPC ID of the instance"
+#   type        = string
+# }
 
 variable "qtd_instances" {
   description = "The quantity of instances"

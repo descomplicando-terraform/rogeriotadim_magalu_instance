@@ -1,7 +1,14 @@
-data "mgc_network_vpc" "vpc" {
-  id = "971c798c-c788-4166-b051-2f3f850c7858"
+variable "name" {
+  description = "The name of the instance"
+  type        = string
+  default     = "instance-test"
 }
 
+variable "qtd_instances" {
+  description = "The number of instances to create"
+  type        = number
+  default     = 1
+}
 
 variable "api_key" {
   description = "API Key"
@@ -10,8 +17,3 @@ variable "api_key" {
 }
 
 
-variable "qtd_instances" {
-  description = "The number of instances to create"
-  type        = number
-  default     = 1
-}

@@ -5,7 +5,7 @@ resource "mgc_virtual_machine_instances" "instances" {
   machine_type      = var.machine_type
   image             = var.image
   ssh_key_name      = var.ssh_key_name
-  vpc_id            = var.vpc_id
+  # vpc_id            = var.vpc_id
 }
 
 output "instances" {
