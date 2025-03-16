@@ -9,6 +9,7 @@ Módulo terraform para provisionamento de instâncias na MagaluCloud.
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
+|[[requirement_terraform]] <<requirement_terraform,terraform>> |= 1.9.2
 |[[requirement_mgc]] <<requirement_mgc,mgc>> |0.32.1
 |===
 
