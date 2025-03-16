@@ -44,7 +44,7 @@ jobs:
       #   run: terraform init
 
       - name: Run Terratest
-        run: go test -timeout 15m -v ./tests/
+        run: cd tests && go test -timeout 15m -v ./...
 
       - name: Render terraform docs and push changes back to PR
         uses: terraform-docs/gh-actions@main
