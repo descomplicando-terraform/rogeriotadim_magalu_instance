@@ -15,9 +15,3 @@ plugin "terraform" {
 rule "terraform_deprecated_interpolation" {
   enabled = true
 }
-
-# Configuração para o diretório de exemplo
-rule "terraform_module_pinned_source" {
-  enabled = true
-  include = ["example/**/*.tf"]
-}
