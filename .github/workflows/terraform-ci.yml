@@ -40,6 +40,14 @@ jobs:
       - name: Terraform Format
         run: terraform fmt -recursive
 
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v3
+        with:
+          tflint_version: v0.44.1
+      
+      - name: Run TFLint
+        run: tflint --format=compact
+
       - name: Terraform Validate
         run: cd example && terraform init && terraform validate
 
