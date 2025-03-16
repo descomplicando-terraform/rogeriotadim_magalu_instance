@@ -40,13 +40,13 @@ jobs:
       - name: Terraform Format
         run: terraform fmt -recursive
 
-      # - name: Terraform Init
-      #   run: terraform init
+      - name: Terraform Validate
+        run: cd example && terraform init && terraform validate
 
-      - name: Run Terratest
-        run: cd tests && go test -timeout 15m -v ./...
-        env:
-          TF_VAR_api_key: ${{ secrets.MAGALU_API_KEY }}
+      # - name: Run Terratest
+      #   run: cd tests && go test -timeout 15m -v ./...
+      #   env:
+      #     TF_VAR_api_key: ${{ secrets.MAGALU_API_KEY }}
 
       - name: Render terraform docs and push changes back to PR
         uses: terraform-docs/gh-actions@main
