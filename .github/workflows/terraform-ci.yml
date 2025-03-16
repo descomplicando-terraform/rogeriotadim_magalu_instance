@@ -45,11 +45,14 @@ jobs:
 
       - name: Render terraform docs and push changes back to PR
         uses: terraform-docs/gh-actions@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           working-dir: .
           output-file: README.adoc
-          output-method: replace
+          output-method: inject
           git-push: "true"
+          github_token: ${{ secrets.RT_TOKEN }}
 
 
       # - name: Generate Terraform Docs and Update README
@@ -78,10 +81,10 @@ jobs:
       #     # Escreve o novo conteúdo no README.adoc
       #     echo "$NEW_README" > README.adoc
 
-      - name: Commit and push docs change
-        run: |
-          git config --global user.email "rogeriotadim@gmail.com"
-          git config --global user.name "Rogério Tadim"
-          git add README.adoc
-          git commit -m "Update README.adoc with terraform-docs"
-          git push
+      # - name: Commit and push docs change
+      #   run: |
+      #     git config --global user.email "rogeriotadim@gmail.com"
+      #     git config --global user.name "Rogério Tadim"
+      #     git add README.adoc
+      #     git commit -m "Update README.adoc with terraform-docs"
+      #     git push
