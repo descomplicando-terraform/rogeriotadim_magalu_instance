@@ -1,0 +1,6 @@
+= Módulo Instances MagaluCloud
+
+Módulo terraform para provisionamento de instâncias na MagaluCloud.
+
+<!-- BEGIN_TF_DOCS -->
+<!-- END_TF_DOCS -->
