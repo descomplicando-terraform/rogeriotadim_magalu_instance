@@ -1,0 +1,87 @@
+name: Terraform CI
+
+on:
+  push:
+  # pull_request:
+  #   branches:
+  #     - main
+
+jobs:
+  terraform:
+    name: Terraform Test and Document
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: tfsec
+        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
+        with:
+          github_token: ${{ github.token }}
+          
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.2
+
+      - name: Terraform Format
+        run: terraform fmt -recursive
+
+      # - name: Terraform Init
+      #   run: terraform init
+
+      # - name: Run Terratest
+      #   run: go test -timeout 30m -v ./tests/
+
+      - name: Render terraform docs and push changes back to PR
+        uses: terraform-docs/gh-actions@main
+        with:
+          working-dir: .
+          output-file: README.adoc
+          output-method: replace
+          git-push: "true"
+
+
+      # - name: Generate Terraform Docs and Update README
+      #   run: |
+      #     # Define marcadores no README.adoc
+      #     DOCS_START="<!-- BEGIN_TF_DOCS -->"
+      #     DOCS_END="<!-- END_TF_DOCS -->"
+
+      #     # Gera a documentação
+      #     DOCS=$(terraform-docs -c .terraform-docs.yml modules/seu-modulo)
+
+      #     # Lê o conteúdo do README.adoc
+      #     README=$(cat README.adoc)
+
+      #     # Encontra a posição dos marcadores
+      #     START_POS=$(echo "$README" | grep -n "$DOCS_START" | cut -d':' -f1)
+      #     END_POS=$(echo "$README" | grep -n "$DOCS_END" | cut -d':' -f1)
+
+      #     # Extrai o conteúdo antes e depois dos marcadores
+      #     BEFORE=$(echo "$README" | head -n $(($START_POS - 1)))
+      #     AFTER=$(echo "$README" | tail -n +$(($END_POS + 1)))
+
+      #     # Constrói o novo conteúdo do README.adoc
+      #     NEW_README="$BEFORE"$'\n'"$DOCS_START"$'\n'"$DOCS"$'\n'"$DOCS_END"$'\n'"$AFTER"
+
+      #     # Escreve o novo conteúdo no README.adoc
+      #     echo "$NEW_README" > README.adoc
+
+      - name: Commit and push docs change
+        run: |
+          git config --global user.email "rogeriotadim@gmail.com"
+          git config --global user.name "Rogério Tadim"
+          git add README.adoc
+          git commit -m "Update README.adoc with terraform-docs"
+          git push origin main
