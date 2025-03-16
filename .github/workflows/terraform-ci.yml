@@ -46,13 +46,13 @@ jobs:
       - name: Render terraform docs and push changes back to PR
         uses: terraform-docs/gh-actions@main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           working-dir: .
           output-file: README.adoc
           output-method: inject
           git-push: "true"
-          github_token: ${{ secrets.RT_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
 
       # - name: Generate Terraform Docs and Update README
