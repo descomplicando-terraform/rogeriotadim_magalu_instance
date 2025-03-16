@@ -3,42 +3,84 @@
 Módulo terraform para provisionamento de instâncias na MagaluCloud.
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_mgc"></a> [mgc](#requirement\_mgc) | 0.32.1 |
+== Requirements
 
-## Providers
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Version
+|[[requirement_mgc]] <<requirement_mgc,mgc>> |0.32.1
+|===
 
-| Name | Version |
-|------|---------|
-| <a name="provider_mgc"></a> [mgc](#provider\_mgc) | 0.32.1 |
+== Providers
 
-## Modules
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Version
+|[[provider_mgc]] <<provider_mgc,mgc>> |0.32.1
+|===
+
+== Modules
 
 No modules.
 
-## Resources
+== Resources
 
-| Name | Type |
-|------|------|
-| [mgc_virtual_machine_instances.instances](https://registry.terraform.io/providers/magalucloud/mgc/0.32.1/docs/resources/virtual_machine_instances) | resource |
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Type
+|https://registry.terraform.io/providers/magalucloud/mgc/0.32.1/docs/resources/virtual_machine_instances[mgc_virtual_machine_instances.instances] |resource
+|===
 
-## Inputs
+== Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_availability_zone"></a> [availability\_zone](#input\_availability\_zone) | The availability zone of the instances | `string` | `"br-se1-a"` | no |
-| <a name="input_image"></a> [image](#input\_image) | The image of the instance | `string` | n/a | yes |
-| <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | The machine type of the instance | `string` | n/a | yes |
-| <a name="input_name"></a> [name](#input\_name) | The name of the VPC | `string` | n/a | yes |
-| <a name="input_qtd_instances"></a> [qtd\_instances](#input\_qtd\_instances) | The quantity of instances | `number` | `1` | no |
-| <a name="input_ssh_key_name"></a> [ssh\_key\_name](#input\_ssh\_key\_name) | The SSH key pair zone of the instance | `string` | `null` | no |
+[cols="a,a,a,a,a",options="header,autowidth"]
+|===
+|Name |Description |Type |Default |Required
+|[[input_availability_zone]] <<input_availability_zone,availability_zone>>
+|The availability zone of the instances
+|`string`
+|`"br-se1-a"`
+|no
 
-## Outputs
+|[[input_image]] <<input_image,image>>
+|The image of the instance
+|`string`
+|n/a
+|yes
 
-| Name | Description |
-|------|-------------|
-| <a name="output_instances"></a> [instances](#output\_instances) | n/a |
+|[[input_machine_type]] <<input_machine_type,machine_type>>
+|The machine type of the instance
+|`string`
+|n/a
+|yes
+
+|[[input_name]] <<input_name,name>>
+|The name of the VPC
+|`string`
+|n/a
+|yes
+
+|[[input_qtd_instances]] <<input_qtd_instances,qtd_instances>>
+|The quantity of instances
+|`number`
+|`1`
+|no
+
+|[[input_ssh_key_name]] <<input_ssh_key_name,ssh_key_name>>
+|The SSH key pair zone of the instance
+|`string`
+|`null`
+|no
+
+|===
+
+== Outputs
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Description
+|[[output_instances]] <<output_instances,instances>> |n/a
+|===
+
 <!-- END_TF_DOCS -->
