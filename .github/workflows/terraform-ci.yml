@@ -53,6 +53,7 @@ jobs:
         with:
           working-dir: .
           output-file: README.adoc
+          template: asciidoc
           output-method: inject
           git-push: "true"
           github_token: ${{ secrets.GITHUB_TOKEN }}
