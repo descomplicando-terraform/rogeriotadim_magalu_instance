@@ -49,7 +49,7 @@ jobs:
           tflint_version: v0.44.1
       
       - name: Run TFLint
-        run: tflint --format=compact
+        run: tflint --init && tflint --format=compact
 
       - name: Terraform Validate
         run: cd example && terraform init && terraform validate
