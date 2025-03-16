@@ -57,7 +57,6 @@ jobs:
           output-format: asciidoc table
           output-method: inject
           git-push: "true"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
 
 
       # - name: Generate Terraform Docs and Update README
