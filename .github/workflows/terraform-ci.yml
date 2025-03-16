@@ -6,6 +6,9 @@ on:
   #   branches:
   #     - main
 
+permissions:
+  contents: write
+
 jobs:
   terraform:
     name: Terraform Test and Document
@@ -88,3 +91,4 @@ jobs:
       #     git add README.adoc
       #     git commit -m "Update README.adoc with terraform-docs"
       #     git push
+
