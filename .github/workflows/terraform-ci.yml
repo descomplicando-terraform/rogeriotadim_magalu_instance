@@ -84,4 +84,4 @@ jobs:
           git config --global user.name "Rogério Tadim"
           git add README.adoc
           git commit -m "Update README.adoc with terraform-docs"
-          git push origin main
+          git push
