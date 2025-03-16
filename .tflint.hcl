@@ -1,5 +1,4 @@
 config {
-  module = true
   force = false
   disabled_by_default = false
 }
@@ -14,4 +13,10 @@ plugin "terraform" {
 # Adicione regras específicas conforme necessário
 rule "terraform_deprecated_interpolation" {
   enabled = true
+}
+
+rule "terraform_module_pinned_source" {
+  enabled = true
+  style = "flexible"
+  default_branches = ["main"]
 }
