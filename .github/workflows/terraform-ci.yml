@@ -53,7 +53,8 @@ jobs:
         with:
           working-dir: .
           output-file: README.adoc
-          template: asciidoc
+          template: <!-- BEGIN_TF_DOCS -->\n\n{{ .Content }}\n\n<!-- END_TF_DOCS -->
+          output-format: asciidoc table
           output-method: inject
           git-push: "true"
           github_token: ${{ secrets.GITHUB_TOKEN }}
