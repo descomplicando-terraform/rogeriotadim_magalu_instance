@@ -24,16 +24,6 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
-      - name: tfsec
-        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
-        with:
-          github_token: ${{ github.token }}
-          
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.21'
-
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
         with:
@@ -51,10 +41,23 @@ jobs:
         run: tflint --init && tflint --format=compact --recursive
 
       - name: Terraform Validate
-        run: cd example && terraform init && terraform validate
+        run: terraform init && terraform validate
+        working-directory: ./example
+
+      - name: tfsec
+        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
+        with:
+          github_token: ${{ github.token }}
+          
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache-dependency-path: ./tests/go.sum
 
       - name: Run Terratest
         run: cd tests && go test -timeout 15m -v ./...
+        working-directory: ./tests
         env:
           TF_VAR_api_key: ${{ secrets.MAGALU_API_KEY }}
 
