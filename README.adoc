@@ -1,6 +1,16 @@
 = Módulo Instances MagaluCloud
 
+== Overview
+
 Módulo terraform para provisionamento de instâncias na MagaluCloud.
+
+Com este módulo é possível a criação de uma ou mais instâncias de máquinas virtuais na MagaluCloud.
+
+Dentre as variáveis, a mais significativa é a quantidade de VMs a serem criadas na execução do módulo através da variável `qtd_instances`.
+
+As demais variáveis se encontram na seção `Inputs` abaixo.
+
+
 
 <!-- BEGIN_TF_DOCS -->
 
