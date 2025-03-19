@@ -1,0 +1,97 @@
+= Módulo Instances MagaluCloud
+
+== Overview
+
+Módulo terraform para provisionamento de instâncias na MagaluCloud.
+
+Com este módulo é possível a criação de uma ou mais instâncias de máquinas virtuais na MagaluCloud.
+
+Dentre as variáveis, a mais significativa é a quantidade de VMs a serem criadas na execução do módulo através da variável `qtd_instances`.
+
+As demais variáveis se encontram na seção `Inputs` abaixo.
+
+
+
+<!-- BEGIN_TF_DOCS -->
+
+== Requirements
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Version
+|[[requirement_terraform]] <<requirement_terraform,terraform>> |= 1.9.2
+|[[requirement_mgc]] <<requirement_mgc,mgc>> |0.32.1
+|===
+
+== Providers
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Version
+|[[provider_mgc]] <<provider_mgc,mgc>> |0.32.1
+|===
+
+== Modules
+
+No modules.
+
+== Resources
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Type
+|https://registry.terraform.io/providers/magalucloud/mgc/0.32.1/docs/resources/virtual_machine_instances[mgc_virtual_machine_instances.instances] |resource
+|===
+
+== Inputs
+
+[cols="a,a,a,a,a",options="header,autowidth"]
+|===
+|Name |Description |Type |Default |Required
+|[[input_availability_zone]] <<input_availability_zone,availability_zone>>
+|The availability zone of the instances
+|`string`
+|`"br-se1-a"`
+|no
+
+|[[input_image]] <<input_image,image>>
+|The image of the instance
+|`string`
+|n/a
+|yes
+
+|[[input_machine_type]] <<input_machine_type,machine_type>>
+|The machine type of the instance
+|`string`
+|n/a
+|yes
+
+|[[input_name]] <<input_name,name>>
+|The name of the VPC
+|`string`
+|n/a
+|yes
+
+|[[input_qtd_instances]] <<input_qtd_instances,qtd_instances>>
+|The quantity of instances
+|`number`
+|`1`
+|no
+
+|[[input_ssh_key_name]] <<input_ssh_key_name,ssh_key_name>>
+|The SSH key pair zone of the instance
+|`string`
+|`null`
+|no
+
+|===
+
+== Outputs
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Description
+|[[output_instances]] <<output_instances,instances>> |n/a
+|===
+
+<!-- END_TF_DOCS -->
